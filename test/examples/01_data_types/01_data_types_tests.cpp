@@ -2,6 +2,7 @@
 #include "catch.hpp"
 #include "int.h"
 #include "decimals.h"
+#include "char.h"
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
@@ -33,4 +34,10 @@ TEST_CASE("Verify add to double 2 w 0 as parameter", "show issues when comparing
 /*test case char test ASCII values */
 
 /*test case string test ASCII values Joe characters are equal to 74, 111, and 101*/
+TEST_CASE("Test char to int conversion")
+{
+	REQUIRE(get_char_ascii_value('J') == 74);
+	REQUIRE(get_char_ascii_value('o') == 111);
+	REQUIRE(get_char_ascii_value('e') == 101);
+}
 
