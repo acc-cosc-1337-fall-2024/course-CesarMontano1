@@ -29,3 +29,4 @@ TEST_CASE("Test Get Tip Amount", "hwexpressions")
     // Assertion for get_tip_amount with parameters 20 and 20%
     REQUIRE(get_tip_amount(20, 0.20) == Approx(4.0));
 }
+
