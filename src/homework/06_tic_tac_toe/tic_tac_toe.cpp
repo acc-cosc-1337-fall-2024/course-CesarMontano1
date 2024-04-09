@@ -72,7 +72,7 @@ void TicTacToe::clear_board() {
 bool TicTacToe::check_row_win() {
     // Check for a win in any row
     for (int i = 0; i < 3; ++i) {
-        if (pegs[i] == pegs[i + 1] && pegs[i + 1] == pegs[i + 2] && pegs[i] != " ")
+        if (pegs[i * 3] == pegs[i * 3 + 1] && pegs[i * 3 + 1] == pegs[i * 3 + 2] && pegs[i * 3] != " ")
             return true;
     }
     return false;

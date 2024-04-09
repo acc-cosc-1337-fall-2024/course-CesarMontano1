@@ -24,17 +24,33 @@ TEST_CASE("Test game over if 9 slots are selected", "game_over_after_9_slots_sel
     TicTacToe game;
     game.start_game("X");
 
-    for (int i = 1; i <= 9; ++i) {
-        game.mark_board(i);
-        REQUIRE(game.game_over() == (i == 9));
-    }
+    game.mark_board(2);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(1);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(3);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(5);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(4);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(6);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(9);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(8);
+    REQUIRE(game.game_over() == false);
+    game.mark_board(7);
+    REQUIRE(game.game_over() == true);
 }
 
 TEST_CASE("Test win by first column", "win_by_first_column") {
     TicTacToe game;
     game.start_game("X");
     game.mark_board(1);
+    game.mark_board(2);
     game.mark_board(4);
+    game.mark_board(5);
     game.mark_board(7);
     REQUIRE(game.game_over() == true);
 }
@@ -43,7 +59,9 @@ TEST_CASE("Test win by second column", "win_by_second_column") {
     TicTacToe game;
     game.start_game("X");
     game.mark_board(2);
+    game.mark_board(1);
     game.mark_board(5);
+    game.mark_board(3);
     game.mark_board(8);
     REQUIRE(game.game_over() == true);
 }
@@ -52,7 +70,9 @@ TEST_CASE("Test win by third column", "win_by_third_column") {
     TicTacToe game;
     game.start_game("X");
     game.mark_board(3);
+    game.mark_board(1);
     game.mark_board(6);
+    game.mark_board(2);
     game.mark_board(9);
     REQUIRE(game.game_over() == true);
 }
@@ -61,7 +81,9 @@ TEST_CASE("Test win by first row", "win_by_first_row") {
     TicTacToe game;
     game.start_game("X");
     game.mark_board(1);
+    game.mark_board(4);
     game.mark_board(2);
+    game.mark_board(5);
     game.mark_board(3);
     REQUIRE(game.game_over() == true);
 }
@@ -70,7 +92,9 @@ TEST_CASE("Test win by second row", "win_by_second_row") {
     TicTacToe game;
     game.start_game("X");
     game.mark_board(4);
+    game.mark_board(1);
     game.mark_board(5);
+    game.mark_board(2);
     game.mark_board(6);
     REQUIRE(game.game_over() == true);
 }
@@ -79,7 +103,9 @@ TEST_CASE("Test win by third row", "win_by_third_row") {
     TicTacToe game;
     game.start_game("X");
     game.mark_board(7);
+    game.mark_board(1);
     game.mark_board(8);
+    game.mark_board(2);
     game.mark_board(9);
     REQUIRE(game.game_over() == true);
 }
@@ -88,7 +114,9 @@ TEST_CASE("Test win diagonally from top left", "win_diagonally_top_left") {
     TicTacToe game;
     game.start_game("X");
     game.mark_board(1);
+    game.mark_board(2);
     game.mark_board(5);
+    game.mark_board(3);
     game.mark_board(9);
     REQUIRE(game.game_over() == true);
 }
@@ -97,7 +125,9 @@ TEST_CASE("Test win diagonally from bottom left", "win_diagonally_bottom_left") 
     TicTacToe game;
     game.start_game("X");
     game.mark_board(7);
+    game.mark_board(1);
     game.mark_board(5);
+    game.mark_board(2);
     game.mark_board(3);
     REQUIRE(game.game_over() == true);
 }
