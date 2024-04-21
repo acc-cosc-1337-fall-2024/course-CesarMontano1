@@ -1,6 +1,8 @@
 //cpp
 #include "tic_tac_toe.h"
 #include <iostream>
+#include <memory>
+using std::cout;
 
 TicTacToe::TicTacToe() {}
 
@@ -28,13 +30,23 @@ std::string TicTacToe::get_player() const {
     return player;
 }
 
-void TicTacToe::display_board() const {
-    for (int i = 0; i < 9; ++i) {
-        std::cout << pegs[i];
-        if ((i + 1) % 3 == 0)
-            std::cout << std::endl;
-        else
-            std::cout << " | ";
+void TicTacToe::display_board() const
+{
+    if(pegs.size() == 9)
+    {
+        for(long unsigned int i = 0; i < pegs.size(); i += 3)
+        {
+            std::cout<<pegs[i]<<" | "<<pegs[i+1]<<" | "<<pegs[i+2]<<"\n";
+            if(i != 6){std::cout<<"- + - + - \n";}
+        }
+    }
+    else if(pegs.size() == 16)
+    {
+        for(long unsigned int i = 0; i < pegs.size(); i += 4)
+        {
+            std::cout<<pegs[i]<<" | "<<pegs[i+1]<<" | "<<pegs[i+2]<<" | "<<pegs[i+3]<<"\n";
+            if(i != 12){std::cout<<"- + - + - + - \n";}
+        }
     }
 }
 
@@ -70,28 +82,14 @@ void TicTacToe::clear_board() {
 }
 
 bool TicTacToe::check_row_win() {
-    // Check for a win in any row
-    for (int i = 0; i < 3; ++i) {
-        if (pegs[i * 3] == pegs[i * 3 + 1] && pegs[i * 3 + 1] == pegs[i * 3 + 2] && pegs[i * 3] != " ")
-            return true;
-    }
     return false;
 }
 
 bool TicTacToe::check_column_win() {
-    // Check for a win in any column
-    for (int i = 0; i < 3; ++i) {
-        if (pegs[i] == pegs[i + 3] && pegs[i + 3] == pegs[i + 6] && pegs[i] != " ")
-            return true;
-    }
     return false;
 }
 
 bool TicTacToe::check_diagonal_win() {
-    // Check for a win in any diagonal
-    if ((pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[0] != " ") ||
-        (pegs[2] == pegs[4] && pegs[4] == pegs[6] && pegs[2] != " "))
-        return true;
     return false;
 }
 

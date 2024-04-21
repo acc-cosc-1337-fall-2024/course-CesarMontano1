@@ -5,9 +5,9 @@
 // Constructor
 TicTacToeManager::TicTacToeManager() {}
 
-void TicTacToeManager::save_game(TicTacToe b) {
-    games.push_back(b);
-    char winner = b.get_winner();
+void TicTacToeManager::save_game(std::unique_ptr<TicTacToe>&& b) {
+    game.push_back(std::move(b));
+    char winner = game.back()->get_winner();
     std::string winnerString(1, winner);  // Convert char to std::string
     update_winner_count(winnerString);
 }
